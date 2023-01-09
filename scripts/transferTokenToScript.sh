@@ -1,11 +1,11 @@
-cardano-cli transaction build-raw \
+cardano-cli transaction build \
     --babbage-era \
-    --tx-in bf292feecb204da0d6c54b402c4ab18b024f9b96c720127a15e1b0f93ca33c14#0  \
-    --tx-out-datum-hash-file "../random-number.json" \
-    --tx-out $(cat ../ref-input.addr)+100000000 \
-    --tx-out  $(cat ../wallets/wallet1/w1.addr)+9899822135 \
+    --tx-in e9e3d44e1c5e66039aca59aed78a3d62e97648695b353bebf1d8bbec91cc9f5b#1  \
+    --tx-out $(cat ../wallets/wallet2/w2.addr)+100000000 \
+    --tx-out-inline-datum-value 9008 \
+    --change-address $(cat ../wallets/wallet1/w1.addr) \
     --out-file "../tx/tx.raw" \
-    --fee 177865
+    --$TS
 
 cardano-cli transaction sign \
 --signing-key-file "../wallets/wallet1/w1.skey" \
